@@ -1,0 +1,86 @@
+<!--HEADER: CABECERA Y MENÚ DE NAVEGACIÓN-->
+
+<header class="container-fluid">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-5 col-md-2 col-lg-2 logo">
+                <a href="/"><img src="/images/logo-mercado-liebre.svg " alt=" "></a>
+            </div>
+
+            <div class="col-7 col-md-6 col-lg-6">
+
+                <form action="/products/search" method="get" class="search-form">
+                    <input type="text" name="search" placeholder="Buscar productos, marcas y más"
+                        class="search-form_input">
+                    <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <div class="col-12 col-md-4 col-lg-4 d-flex justify-content-end align-items-center cuotas">
+
+                <% if (typeof usuario == "undefined") { %>
+                <a href="">
+                    <h5 class="mr-2">Usuario</h5>
+                </a>
+                <a href=""><img src="/images/users/default.png" alt="" width="50px" height="50px"></a>
+
+                <% } else{ %>
+              
+                <a href="/users/profile">
+                    <h5 class="mr-2"><%= usuario.nick %> </h5>
+                </a>
+                <a href="/users/profile"><img src="/images/users/<%= usuario.avatar %>" alt="" width="50px" height="50px"
+                    class="rounded-circle avatar"></a>
+                <% } %>
+            </div>
+
+        </div>
+
+        <nav class="navbar-expand-md">
+
+            <button class="navbar-toggler burger" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><i class="fas fa-bars "></i></button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="menu navbar-nav mr-auto">
+                    <li>
+                        <a href=" ">Ofertas</a>
+                    </li>
+                    <li>
+                        <a href=" ">Tiendas Oficiales</a>
+                    </li>
+                    <li>
+                        <a href="/products/add">Vender</a>
+                    </li>
+                    <li>
+                        <a href=" ">Ayuda</a>
+                    </li>
+                </ul>
+
+                <ul class="usuario navbar-nav">
+                    <% if (typeof usuario == "undefined") { %>
+                    <li class="">
+                        <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt "></i></a>
+                    </li>
+                    <li class="">
+                        <a href="/users/register">Creá tu cuenta <i class="far fa-address-card "></i></a>
+                    </li>
+                    <% } else{ %>
+                        <li class="">
+
+                        <a href="/users/logout">Cerrar sesión <i class="fas fa-sign-in-alt "></i></a>
+                        <li class="">
+                            <a href="/users/profile">Mis compras <i class="fas fa-shopping-basket "></i></a>
+                    </li>
+                    <% } %>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</header>
